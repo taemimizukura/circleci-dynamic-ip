@@ -43,7 +43,7 @@ jobs:
               --output text \
               --region ap-northeast-1)
             echo "${DNS_NAME}" > dns_name.txt
-        - run:
+      - run:
             name: Get EC2 Instance Public IP from CloudFormation
             command: |
               INSTANCE_PUBLIC_IP=$(aws cloudformation describe-stacks \
@@ -52,7 +52,7 @@ jobs:
                 --output text \
                 --region ap-northeast-1)
               echo "${INSTANCE_PUBLIC_IP}" > instance_public_ip.txt
-        - persist_to_workspace:
+      - persist_to_workspace:
           root: .
           paths:
             - dns_name.txt
