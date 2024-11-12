@@ -47,8 +47,8 @@ Resources:
     Properties:
       DBSubnetGroupDescription: Subnet group for RDS
       SubnetIds:
-        - !ImportValue PrivateSubnet01
-        - !ImportValue PrivateSubnet02
+        - !ImportValue "target-dynamic-ip-PrivateSubnet01"
+        - !ImportValue "target-dynamic-ip-PrivateSubnet02"
       DBSubnetGroupName: !Sub ${NameBase}-subnet-group-${AWS::StackName}
 
   RDSSecurityGroup:
@@ -56,12 +56,12 @@ Resources:
     Properties:
       GroupDescription: Security group for RDS(Relational Database Service)
       GroupName: !Sub ${NameBase}-rds-sg
-      VpcId: !ImportValue MyVpc
+      VpcId: !ImportValue "target-dynamic-ip-vpc"
       SecurityGroupIngress:
         - IpProtocol: tcp
           FromPort: 3306
           ToPort: 3306
-          SourceSecurityGroupId: !ImportValue EC2SecurityGroupTarget
+          SourceSecurityGroupId: !ImportValue "target-dynamic-ip-ec2-sg"
           Description: Allow incoming MySQL traffic from target node EC2
       SecurityGroupEgress:
         - IpProtocol: -1
@@ -114,10 +114,10 @@ Resources:
     Properties:
       Name: !Sub ${NameBase}-alb
       Subnets:
-        - !ImportValue PublicSubnet01
-        - !ImportValue PublicSubnet02
+        - !ImportValue "target-dynamic-ip-PublicSubnet01"
+        - !ImportValue "target-dynamic-ip-PublicSubnet02"
       SecurityGroups:
-        - !ImportValue ELBSecurityGroup
+        - !ImportValue "target-dynamic-ip-elb-sg"
       Scheme: internet-facing
       Type: application
       Tags:
@@ -130,7 +130,7 @@ Resources:
       Name: !Sub ${NameBase}-tg
       Port: 80
       Protocol: HTTP
-      VpcId: !ImportValue MyVpc
+      VpcId: !ImportValue "target-dynamic-ip-vpc"
       HealthCheckIntervalSeconds: 30
       HealthCheckProtocol: HTTP
       HealthCheckPort: traffic-port
@@ -140,7 +140,8 @@ Resources:
       UnhealthyThresholdCount: 2
       TargetType: instance
       Targets:
-        - Id: !ImportValue MyEC2Instance2
+        - Id: !ImportValue "target-dynamic-ip-ec2"
+              
       Tags:
         - Key: Name
           Value: !Sub ${NameBase}-tg

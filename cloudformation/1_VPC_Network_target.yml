@@ -19,7 +19,7 @@ Resources:
         - Key: Name
           Value: !Sub ${NameBase}-vpc
 #--------------------------------------------------------#         
-# Subnet（publicのみ）
+# Subnet
 #--------------------------------------------------------#
   PublicSubnet01:
     Type: AWS::EC2::Subnet
@@ -76,6 +76,7 @@ Resources:
       Tags:
         - Key: Name
           Value: !Sub "${NameBase}-subnet-private02"
+
 #--------------------------------------------------------#         
 # Internet Gateway
 #--------------------------------------------------------#
@@ -155,24 +156,24 @@ Outputs:
   VpcId:
     Value: !Ref MyVpc
     Export:
-      Name: MyVpc
+      Name: !Sub ${NameBase}-vpc
 
   PublicSubnet01:
     Value: !Ref PublicSubnet01
     Export:
-      Name: PublicSubnet01
+      Name: !Sub "${NameBase}-PublicSubnet01"
 
   PublicSubnet02:
     Value: !Ref PublicSubnet02
     Export:
-      Name: PublicSubnet02
+      Name: !Sub "${NameBase}-PublicSubnet02"
   
   PrivateSubnet01:
     Value: !Ref PrivateSubnet01
     Export:
-      Name: PrivateSubnet01
+      Name: !Sub "${NameBase}-PrivateSubnet01"
   
   PrivateSubnet02:
     Value: !Ref PrivateSubnet02
     Export:
-      Name: PrivateSubnet02
+      Name: !Sub "${NameBase}-PrivateSubnet02"

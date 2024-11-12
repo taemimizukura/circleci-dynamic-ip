@@ -13,15 +13,18 @@ Resources:
 #--------------------------------------------------------#         
 # EC2
 #--------------------------------------------------------#
-  MyEC2Instance2:
+  MyEC2Instance:
     Type: AWS::EC2::Instance
     Properties:
       InstanceType: t2.micro
       KeyName: !Ref MyKeyPair
-      SecurityGroupIds:
-        - !Ref EC2SecurityGroupTarget
+      NetworkInterfaces: 
+        - AssociatePublicIpAddress: "true"
+          DeviceIndex: "0"
+          SubnetId: !ImportValue "target-dynamic-ip-PublicSubnet01"
+          GroupSet:
+            - !Ref EC2SecurityGroupTarget       
       ImageId: ami-0d889f77081190db1
-      SubnetId: !ImportValue PublicSubnet01
       IamInstanceProfile: !Ref InstanceProfile
       UserData:
         Fn::Base64: |
@@ -31,7 +34,6 @@ Resources:
       Tags:
         - Key: Name
           Value: !Sub ec2-${NameBase}
-
 #--------------------------------------------------------#
 # Security Group for EC2
 #--------------------------------------------------------#
@@ -40,7 +42,7 @@ Resources:
     Properties:
       GroupDescription: Security group for EC2
       GroupName: !Sub ${NameBase}-ec2-sg
-      VpcId: !ImportValue MyVpc
+      VpcId: !ImportValue "target-dynamic-ip-vpc"
       SecurityGroupIngress:
         - IpProtocol: tcp
           FromPort: 80  
@@ -66,7 +68,7 @@ Resources:
     Properties:
       GroupDescription: Security group for ELB(Elastic Load Balancer)
       GroupName: !Sub ${NameBase}-elb-sg
-      VpcId: !ImportValue MyVpc
+      VpcId: !ImportValue "target-dynamic-ip-vpc"
       SecurityGroupIngress:
         - IpProtocol: tcp
           FromPort: 80
@@ -116,20 +118,21 @@ Outputs:
   EC2SecurityGroupTarget:
     Value: !Ref EC2SecurityGroupTarget
     Export:
-      Name: EC2SecurityGroupTarget
+      Name: !Sub ${NameBase}-ec2-sg
 
-  MyEC2Instance2:
-    Value: !Ref MyEC2Instance2
+  MyEC2Instance:
+    Value: !Ref MyEC2Instance
     Export:
-      Name: MyEC2Instance2
+      Name: !Sub ${NameBase}-ec2
   
   ELBSecurityGroup:
     Value: !Ref ELBSecurityGroup
     Export:
-      Name: ELBSecurityGroup
+      Name: !Sub "${NameBase}-elb-sg"
 
   InstancePublicIp:
     Description: "Public IP of the EC2 instance"
-    Value: !GetAtt MyEC2Instance2.PublicIp
-    Export:
-      Name: !Sub "${AWS::StackName}-InstancePublicIp"
+    Value: !GetAtt MyEC2Instance.PublicIp
+
+
+
