@@ -1,1 +1,8 @@
-serverspec/vendor
+vendor/
+*.zip
+*.tar.gz
+*.log
+*.pem
+*.bak
+*.swp
+.vscode/
