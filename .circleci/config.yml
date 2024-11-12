@@ -38,7 +38,7 @@ jobs:
           name: Get ELB DNS_NAME from CloudFormation
           command: |
             DNS_NAME=$(aws cloudformation describe-stacks \
-              --stack-name "Lec13-RDS-S3" \
+              --stack-name "ALB-RDS-S3" \
               --query "Stacks[0].Outputs[?OutputKey=='LoadBalancerDNS'].OutputValue" \
               --output text \
               --region ap-northeast-1)

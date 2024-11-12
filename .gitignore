@@ -6,3 +6,4 @@ vendor/
 *.bak
 *.swp
 .vscode/
+aws/
