@@ -98,7 +98,7 @@ jobs:
           name: Execute serverspec
           command: |
             cd serverspec
-            TARGET_HOST=18.180.2.113 bundle exec rspec
+            TARGET_HOST=${INSTANCE_PUBLIC_IP} bundle exec rspec
 workflows:
   version: 2
   lec13-workflow:
