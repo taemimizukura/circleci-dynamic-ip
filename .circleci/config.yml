@@ -97,7 +97,7 @@ jobs:
       - run:
           name: Attach workspace and load environment variables
           command: |
-            source /tmp/workspace/.bash_env
+            source /tmp/workspace/.env
       - run:
           name: Execute serverspec
           command: |
