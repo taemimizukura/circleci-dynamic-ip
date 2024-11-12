@@ -97,11 +97,12 @@ jobs:
       - run:
           name: Attach workspace and load environment variables
           command: |
-            source $BASH_ENV
+            source /tmp/workspace/.bash_env
       - run:
           name: Execute serverspec
           command: |
             cd serverspec
+            echo "Using IP: ${INSTANCE_PUBLIC_IP}"
             TARGET_HOST=${INSTANCE_PUBLIC_IP} bundle exec rspec
 workflows:
   version: 2
