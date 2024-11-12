@@ -95,6 +95,10 @@ jobs:
       - ruby/install-deps:
           app-dir: serverspec
       - run:
+          name: Attach workspace and load environment variables
+          command: |
+            source $BASH_ENV
+      - run:
           name: Execute serverspec
           command: |
             cd serverspec
