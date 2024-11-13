@@ -62,7 +62,7 @@ jobs:
     steps:
       - checkout
       - attach_workspace:
-          at: /tmp/workspace
+          at: .
       - run:
           name: Load DNS_NAME and INSTANCE_PUBLIC_IP from workspace
           command: |
@@ -98,11 +98,7 @@ jobs:
       - ruby/install-deps:
           app-dir: serverspec
       - attach_workspace:
-          at: /tmp/workspace
-      - run:
-          name: load environment variables
-          command: |
-            source /tmp/workspace/.env
+          at: .
       - run:
           name: Execute serverspec
           command: |
