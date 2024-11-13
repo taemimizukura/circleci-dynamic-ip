@@ -68,7 +68,7 @@ jobs:
           name: Load DNS_NAME and INSTANCE_PUBLIC_IP from workspace
           command: |
             DNS_NAME=$(cat ./dns_name.txt)
-            INSTANCE_PUBLIC_IP=$(cat /./instance_public_ip.txt)
+            INSTANCE_PUBLIC_IP=$(cat ./instance_public_ip.txt)
             echo "export DNS_NAME=${DNS_NAME}" >> $BASH_ENV
             echo "export INSTANCE_PUBLIC_IP=${INSTANCE_PUBLIC_IP}" >> $BASH_ENV
       - run:
