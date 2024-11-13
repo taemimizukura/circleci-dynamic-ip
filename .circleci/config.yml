@@ -92,7 +92,7 @@ jobs:
           command: |
             ansible-playbook -i aws_ec2.yml ansible/playbook.yml \
               --extra-vars "alb_dns=${DNS_NAME} instance_ip=${INSTANCE_PUBLIC_IP}" \
-              --ansible_ssh_private_key_file ~/.ssh/raisetech-key.pem
+              --private_key ~/.ssh/raisetech-key.pem
       - persist_to_workspace:
           root: .
           paths:
