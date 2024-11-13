@@ -94,7 +94,7 @@ jobs:
       - run:
           name: Execute Ansible Playbook
           command: |
-            ansible-playbook -i ansible/inventory ansible/playbook.yml --extra-vars "alb_dns=${DNS_NAME} instance_ip=${INSTANCE_PUBLIC_IP}"
+            ansible-playbook -i ansible/inventory ansible/playbook.yml --extra-vars "alb_dns=${DNS_NAME} instance_ip=${INSTANCE_PUBLIC_IP}" -vvv
 
   execute-serverspec:
     executor: ruby/default
