@@ -63,7 +63,7 @@ jobs:
     steps:
       - checkout
       - attach_workspace:
-          at: /tmp/workspace
+          at: .
       - run:
           name: List files in workspace
           command: |
@@ -72,8 +72,8 @@ jobs:
       - run:
           name: Load DNS_NAME and INSTANCE_PUBLIC_IP from workspace
           command: |
-            DNS_NAME=$(cat /tmp/workspace/dns_name.txt)
-            INSTANCE_PUBLIC_IP=$(cat /tmp/workspace/instance_public_ip.txt)
+            DNS_NAME=$(cat ./dns_name.txt)
+            INSTANCE_PUBLIC_IP=$(cat /./instance_public_ip.txt)
             echo "export DNS_NAME=${DNS_NAME}" >> $BASH_ENV
             echo "export INSTANCE_PUBLIC_IP=${INSTANCE_PUBLIC_IP}" >> $BASH_ENV
       - run:
@@ -105,11 +105,11 @@ jobs:
       - ruby/install-deps:
           app-dir: serverspec
       - attach_workspace:
-          at: /tmp/workspace
+          at: .
       - run:
           name: Load INSTANCE_PUBLIC_IP from workspace
           command: |
-            INSTANCE_PUBLIC_IP=$(cat /tmp/workspace/instance_public_ip.txt)
+            INSTANCE_PUBLIC_IP=$(cat ./instance_public_ip.txt)
       - run:
           name: Execute serverspec
           command: |
