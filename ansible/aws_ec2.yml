@@ -1,0 +1,14 @@
+---
+plugin: amazon.aws.aws_ec2
+regions:
+  - ap-northeast-1
+hostnames:
+  - ip-address
+include_filters:
+  # リストの中に複数の条件をいれると、andでつながる
+  - instance-state-name: running
+    tag:Name:
+    # ワイルドカードが使える
+    - "web_*"
+compose:
+  ansible_host: ip-address

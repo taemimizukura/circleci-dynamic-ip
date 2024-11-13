@@ -90,7 +90,9 @@ jobs:
       - run:
           name: Execute Ansible Playbook
           command: |
-            ansible-playbook -i localhost, ansible/playbook.yml --extra-vars "alb_dns=${DNS_NAME} instance_ip=${INSTANCE_PUBLIC_IP} ssh_key_path=${SSH_KEY_PATH}"
+            ansible-playbook -i inventory-aws_ec2.yml ansible/playbook.yml \
+              --extra-vars "alb_dns=${DNS_NAME} instance_ip=${INSTANCE_PUBLIC_IP}" \
+              --private-key ~/.ssh/raisetech-key.pem
       - persist_to_workspace:
           root: .
           paths:
