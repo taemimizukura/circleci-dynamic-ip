@@ -52,7 +52,7 @@ jobs:
                 --region ap-northeast-1)
               echo "${INSTANCE_PUBLIC_IP}" > instance_public_ip.txt
       - persist_to_workspace:
-          root: .
+          root: /tmp/workspace
           paths:
             - dns_name.txt
             - instance_public_ip.txt
