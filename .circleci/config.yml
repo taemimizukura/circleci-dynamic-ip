@@ -86,7 +86,7 @@ jobs:
           command: |
             ansible-playbook -i ansible/inventory ansible/playbook.yml --extra-vars "alb_dns=${DNS_NAME} instance_ip=${INSTANCE_PUBLIC_IP}"
       - persist_to_workspace:
-          root: /tmp/workspace
+          root: .
           paths:
             - .env
   execute-serverspec:
