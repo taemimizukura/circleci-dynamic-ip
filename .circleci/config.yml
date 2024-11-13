@@ -56,6 +56,7 @@ jobs:
           paths:
             - dns_name.txt
             - instance_public_ip.txt
+            
   execute-ansible:
     docker:
       - image: cimg/python:3.8
@@ -90,6 +91,10 @@ jobs:
           name: Execute Ansible Playbook
           command: |
             ansible-playbook -i ansible/inventory ansible/playbook.yml --extra-vars "alb_dns=${DNS_NAME} instance_ip=${INSTANCE_PUBLIC_IP}"
+      - persist_to_workspace:
+          root: .
+          paths:
+            - instance_public_ip.txt
 
   execute-serverspec:
     executor: ruby/default
