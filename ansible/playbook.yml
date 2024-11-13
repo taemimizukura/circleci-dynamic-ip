@@ -1,5 +1,5 @@
 ---
-- hosts: targetnode
+- hosts: all
   remote_user: ec2-user
   vars: 
     ansible_become_timeout: 30
