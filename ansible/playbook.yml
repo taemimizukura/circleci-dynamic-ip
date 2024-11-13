@@ -1,6 +1,7 @@
 ---
 - hosts: "{{ instance_ip }}"
   remote_user: ec2-user
+  ansible_ssh_private_key_file: "{{ ssh_key_path }}" 
   vars: 
     ansible_become_timeout: 30
     app_dir: /home/ec2-user/raisetech-live8-sample-app
@@ -12,10 +13,6 @@
     secret_access_key: "{{ lookup('env','AWS_SECRET_ACCESS_KEY') }}"
     region: "{{ lookup('env','AWS_DEFAULT_REGION') }}"
     ssh_key_path: "{{ lookup('env','SSH_KEY_PATH') }}"
-  tasks:
-    - name: Debug instance_ip
-      debug:
-        msg: "Instance IP is {{ instance_ip }}"
 
   roles:
     - { role: 01_setup }

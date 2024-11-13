@@ -90,7 +90,7 @@ jobs:
       - run:
           name: Execute Ansible Playbook
           command: |
-            ansible-playbook -i ansible/inventory ansible/playbook.yml --extra-vars "alb_dns=${DNS_NAME} instance_ip=${INSTANCE_PUBLIC_IP}"
+            ansible-playbook -i localhost, ansible/playbook.yml --extra-vars "alb_dns=${DNS_NAME} instance_ip=${INSTANCE_PUBLIC_IP}" ssh_key_path=${SSH_KEY_PATH}"
       - persist_to_workspace:
           root: .
           paths:
