@@ -12,6 +12,11 @@
     secret_access_key: "{{ lookup('env','AWS_SECRET_ACCESS_KEY') }}"
     region: "{{ lookup('env','AWS_DEFAULT_REGION') }}"
     ssh_key_path: "{{ lookup('env','SSH_KEY_PATH') }}"
+  tasks:
+    - name: Debug instance_ip
+      debug:
+        msg: "Instance IP is {{ instance_ip }}"
+
   roles:
     - { role: 01_setup }
     - { role: 02_ruby }
