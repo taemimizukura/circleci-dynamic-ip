@@ -65,11 +65,6 @@ jobs:
       - attach_workspace:
           at: .
       - run:
-          name: List files in workspace
-          command: |
-            echo "Listing files in workspace directory:"
-            ls -la /tmp/workspace
-      - run:
           name: Load DNS_NAME and INSTANCE_PUBLIC_IP from workspace
           command: |
             DNS_NAME=$(cat ./dns_name.txt)
