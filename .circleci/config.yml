@@ -15,7 +15,6 @@ jobs:
       - run:
           name: Run cfn-lint for CloudFormation
           command: cfn-lint -i W3002 -t cloudformation/*.yml
-
   execute-cloudformation:
     docker:
       - image: amazon/aws-cli:latest
@@ -86,6 +85,10 @@ jobs:
           name: Execute Ansible Playbook
           command: |
             ansible-playbook -i ansible/inventory ansible/playbook.yml --extra-vars "alb_dns=${DNS_NAME} instance_ip=${INSTANCE_PUBLIC_IP}"
+      - persist_to_workspace:
+          root: /tmp/workspace
+          paths:
+            - .env
   execute-serverspec:
     executor: ruby/default
     steps:
