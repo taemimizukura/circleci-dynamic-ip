@@ -17,7 +17,7 @@ jobs:
           command: cfn-lint -i W3002 -t cloudformation/*.yml
   execute-cloudformation:
     docker:
-      - image: amazon/aws-cli:latest
+      - image: amazon/aws-cli:default
     steps:
       - checkout
       - run:
@@ -52,7 +52,7 @@ jobs:
                 --region ap-northeast-1)
               echo "${INSTANCE_PUBLIC_IP}" > instance_public_ip.txt
       - persist_to_workspace:
-          root: /tmp/workspace
+          root: .
           paths:
             - dns_name.txt
             - instance_public_ip.txt
@@ -97,8 +97,10 @@ jobs:
           version: 3.2.3
       - ruby/install-deps:
           app-dir: serverspec
+      - attach_workspace:
+          at: /tmp/workspace
       - run:
-          name: Attach workspace and load environment variables
+          name: load environment variables
           command: |
             source /tmp/workspace/.env
       - run:
