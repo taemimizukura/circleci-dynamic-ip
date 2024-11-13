@@ -76,6 +76,11 @@ jobs:
             echo "export DNS_NAME=${DNS_NAME}" >> $BASH_ENV
             echo "export INSTANCE_PUBLIC_IP=${INSTANCE_PUBLIC_IP}" >> $BASH_ENV
       - run:
+          name: Check environment variables
+          command: |
+            echo "DNS_NAME: $DNS_NAME"
+            echo "INSTANCE_PUBLIC_IP: $INSTANCE_PUBLIC_IP"
+      - run:
           name: Remove old entry and add new entry
           command: |
             ssh-keygen -R ${INSTANCE_PUBLIC_IP} -f ~/.ssh/known_hosts || true
