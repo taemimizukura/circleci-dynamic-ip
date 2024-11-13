@@ -1,5 +1,5 @@
 ---
-- hosts: all
+- hosts: "{{ instance_ip }}"
   remote_user: ec2-user
   vars: 
     ansible_become_timeout: 30

@@ -1,5 +1,2 @@
-all:
-  hosts:
-    "{{ instance_ip }}":
-      ansible_user: ec2-user
-      ansible_private_key_file: "{{ ssh_key_path }}"
+[all]
+ansible_user=ec2-user ansible_private_key_file={{ ssh_key_path }}
