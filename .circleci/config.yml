@@ -72,6 +72,11 @@ jobs:
             echo "export DNS_NAME=${DNS_NAME}" >> $BASH_ENV
             echo "export INSTANCE_PUBLIC_IP=${INSTANCE_PUBLIC_IP}" >> $BASH_ENV
       - run:
+          name: Check exported variables
+          command: |
+            echo "DNS_NAME is ${DNS_NAME}"
+            echo "INSTANCE_PUBLIC_IP is ${INSTANCE_PUBLIC_IP}"
+      - run:
           name: Remove old entry and add new entry
           command: |
             ssh-keygen -R ${INSTANCE_PUBLIC_IP} -f ~/.ssh/known_hosts || true
@@ -87,7 +92,7 @@ jobs:
           command: |
             ansible-playbook -i ansible/inventory ansible/playbook.yml --extra-vars "alb_dns=${DNS_NAME} instance_ip=${INSTANCE_PUBLIC_IP}"
       - persist_to_workspace:
-          root: /tmp/workspace
+          root: .
           paths:
             - instance_public_ip.txt
 
