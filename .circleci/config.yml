@@ -16,8 +16,7 @@ jobs:
           name: Run cfn-lint for CloudFormation
           command: cfn-lint -i W3002 -t cloudformation/*.yml
   execute-cloudformation:
-    docker:
-      - image: amazon/aws-cli:default
+    executor: aws-cli/default
     steps:
       - checkout
       - run:
