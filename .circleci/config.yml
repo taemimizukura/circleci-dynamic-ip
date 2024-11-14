@@ -113,12 +113,14 @@ jobs:
           name: Load INSTANCE_PUBLIC_IP from workspace
           command: |
             INSTANCE_PUBLIC_IP=$(cat ./instance_public_ip.txt)
+            echo "export INSTANCE_PUBLIC_IP=${INSTANCE_PUBLIC_IP}" >> $BASH_ENV
       - run:
           name: Execute serverspec
           command: |
             cd serverspec
             echo "Using IP: ${INSTANCE_PUBLIC_IP}"
-            TARGET_HOST=${INSTANCE_PUBLIC_IP} bundle exec rspec
+            export TARGET_HOST=${INSTANCE_PUBLIC_IP}
+            bundle exec rspec
 workflows:
   version: 2
   lec13-workflow:
