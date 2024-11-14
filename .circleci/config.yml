@@ -88,6 +88,10 @@ jobs:
           name: Install Ansible
           command: pip install ansible
       - run:
+          name: Install Ansible and AWS dependencies
+          command: |
+            pip install ansible boto3 botocore
+      - run:
           name: Execute Ansible Playbook
           command: |
             ansible-playbook -i ansible/aws_ec2.yml ansible/playbook.yml \
