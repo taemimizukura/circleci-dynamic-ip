@@ -94,8 +94,7 @@ jobs:
       - run:
           name: Execute Ansible Playbook
           command: |
-            ansible-playbook -i ansible/aws_ec2.yml ansible/playbook.yml \
-              --extra-vars "alb_dns=${DNS_NAME} instance_ip=${INSTANCE_PUBLIC_IP}" \
+            ansible-playbook ansible/playbook.yml --extra-vars "alb_dns=${DNS_NAME} instance_ip=${INSTANCE_PUBLIC_IP}"
       - persist_to_workspace:
           root: .
           paths:
