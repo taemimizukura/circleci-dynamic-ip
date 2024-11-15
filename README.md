@@ -12,7 +12,7 @@ dynamic-inventoryを用いてパブリックIPアドレスを動的に取得し�
    - EC2インスタンスの環境確認および動作テスト  
 
 CircleCI実行結果はこちら：  
-[CircleCI Execution Result]()
+[CircleCI Execution Result](https://app.circleci.com/pipelines/github/taemimizukura/circleci-dynamic-ip/70/workflows/80438b08-69fb-4c66-ab19-c149d055a44b)
 
 ## 実行環境
 Control Node：ubuntu(WSL)  
