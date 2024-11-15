@@ -1,5 +1,5 @@
 # circleci-dynamic-ip
-dynamic-inventoryを用いてパブリックIPアドレスを動的に取得し、IPアドレスの変更にも対応できるように設定しました。
+Ansibleのdynamic-inventoryを用いてパブリックIPアドレスを動的に取得し、IPアドレスの変更にも対応できるように設定しました。
 
 ## 概要
 このリポジトリでは以下の自動化プロセスをCircleCIで実行します：
