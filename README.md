@@ -12,8 +12,10 @@ Ansibleのdynamic-inventoryを用いてパブリックIPアドレスを動的に
    - EC2インスタンスの環境確認および動作テスト  
 
 CircleCI実行結果はこちら：  
-[CircleCI Execution Result](https://app.circleci.com/pipelines/github/taemimizukura/circleci-dynamic-ip/70/workflows/80438b08-69fb-4c66-ab19-c149d055a44b)
+[CircleCI Execution Result](https://app.circleci.com/pipelines/github/taemimizukura/circleci-dynamic-ip/70/workflows/80438b08-69fb-4c66-ab19-c149d055a44b)  
 
+証跡画像はこちら：  
+[evidence-image.md](evidence-image.md)
 ## 実行環境
 Control Node：ubuntu(WSL)  
 Target Node：EC2(Amazon Linux2)  
