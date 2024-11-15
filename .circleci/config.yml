@@ -38,7 +38,7 @@ jobs:
           command: |
             DNS_NAME=$(aws cloudformation describe-stacks \
               --stack-name "ALB-RDS-S3-dynamic" \
-              --query "Stacks[0].Outputs[?OutputKey=='LoadBalancerDNS-2'].OutputValue" \
+              --query "Stacks[0].Outputs[?OutputKey=='LoadBalancerDNS'].OutputValue" \
               --output text \
               --region ap-northeast-1)
             echo "${DNS_NAME}" > dns_name.txt

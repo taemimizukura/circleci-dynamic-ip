@@ -18,11 +18,13 @@ CircleCI実行結果はこちら：
 Control Node：ubuntu(WSL)  
 Target Node：EC2(Amazon Linux2)  
 
-### 必要なソフトウェア
+### インストールしたツール（Control Node: Ubuntu on WSL）
+- Ansible 2.16.3
+- AWS CLI 2.19.4
+- Ruby 3.2.3
+- Bundler 2.5.23
+- Serverspec 2.42.3
 - CircleCI CLI
-- AWS CLI
-- Ansible
-- Serverspec
 
 Elastic IPでの固定化はこちら：  
 [circleci_lecture13](https://github.com/taemimizukura/circleci_lecture13)
