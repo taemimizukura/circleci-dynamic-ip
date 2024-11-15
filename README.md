@@ -5,11 +5,11 @@ dynamic-inventoryを用いてパブリックIPアドレスを動的に取得し�
 このリポジトリでは以下の自動化プロセスをCircleCIで実行します：
 1. **CloudFormationの構文チェック**
 2. **CloudFormationスタック実行**  
-   - EC2、ALB、RDS、S3の作成を含むAWSインフラの構築
+   - VPC、EC2、ALB、RDS、S3の作成を含むAWSインフラの構築
 3. **Ansibleによる環境構築**
    - EC2インスタンス上でサンプルアプリケーションのセットアップ
 4. **Serverspecでのテスト**  
-   - インフラの設定確認および動作テスト 
+   - EC2インスタンスの環境確認および動作テスト  
 
 CircleCI実行結果はこちら：  
 [CircleCI Execution Result]()
