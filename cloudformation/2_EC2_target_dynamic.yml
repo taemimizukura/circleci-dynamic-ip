@@ -86,7 +86,7 @@ Resources:
   S3FullAccessRole:
     Type: 'AWS::IAM::Role'
     Properties:
-      RoleName: S3FullAccessRole
+      RoleName: S3FullAccessRole-dynamic
       AssumeRolePolicyDocument:
         Version: '2012-10-17'
         Statement:

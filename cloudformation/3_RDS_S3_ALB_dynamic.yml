@@ -161,6 +161,6 @@ Outputs:
     Description: "The DNS name of the Load Balancer"
     Value: !GetAtt MyALB.DNSName
     Export:
-      Name: LoadBalancerDNS
+      Name: LoadBalancerDNS-2
 
 
