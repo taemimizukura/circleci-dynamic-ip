@@ -1,7 +1,7 @@
 
 # CircleCI実行結果
 ![CircleCI](image/img-00.png)
-# DNS名とPublic IPが動的に取得できていることを確認
+## DNS名とPublic IPが動的に取得できていることを確認
 ![Serverspec](image/img-01.png)
 # Serverspecテスト結果
 ![Serverspec](image/img-02.png)
