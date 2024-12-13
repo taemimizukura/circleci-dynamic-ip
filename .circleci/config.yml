@@ -120,7 +120,6 @@ jobs:
             echo "Using IP: ${INSTANCE_PUBLIC_IP}"
             export TARGET_HOST=${INSTANCE_PUBLIC_IP}
             bundle exec rspec
-            
 workflows:
   version: 2
   lec13-workflow:
