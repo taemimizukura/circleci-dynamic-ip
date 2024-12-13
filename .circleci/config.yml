@@ -5,7 +5,6 @@ orbs:
   ansible-playbook: orbss/ansible-playbook@0.0.5
   aws-cloudformation: orbss/aws-cloudformation@0.1.6
   python: circleci/python@2.0.3
-
 jobs:
   cfn-lint:
     executor: python/default
