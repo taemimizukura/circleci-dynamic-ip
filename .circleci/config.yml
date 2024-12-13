@@ -56,7 +56,6 @@ jobs:
           paths:
             - dns_name.txt
             - instance_public_ip.txt
-
   execute-ansible:
     docker:
       - image: cimg/python:3.8
