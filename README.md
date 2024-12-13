@@ -4,7 +4,7 @@ Ansibleのdynamic-inventoryを用いてパブリックIPアドレスを動的に
 ## 概要
 このリポジトリでは以下の自動化プロセスをCircleCIで実行します：
 1. **CloudFormationの構文チェック**  
-![demo](https://github.com/user-attachments/assets/983bfd50-c710-4839-9aed-a1f0d26841f9)
+![00_cfn-lint-ezgif com-video-to-gif-converter (1)](https://github.com/user-attachments/assets/8c89eb82-b39f-45db-9dcf-156c940c2386)
 2. **CloudFormationスタック実行**  
    - VPC、EC2、ALB、RDS、S3の作成を含むAWSインフラの構築  
 3. **Ansibleによる環境構築**  
