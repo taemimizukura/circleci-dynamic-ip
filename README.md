@@ -1,6 +1,6 @@
 # circleci-dynamic-ip
 Ansibleのdynamic-inventoryを用いてパブリックIPアドレスを動的に取得し、IPアドレスの変更にも対応できるように設定しました。
-
+![構成図](image/img-01_ubuntu.drawio.png)
 ## 概要
 このリポジトリでは以下の自動化プロセスをCircleCIで実行します：
 1. **CloudFormationの構文チェック**  
